@@ -11,10 +11,12 @@ through ESPHome. It works for any project that combines these two boards.
 
 - The ESP32 sits on raised supports, 24 mm above the floor. That leaves room for
   Dupont jumpers on the downward-facing header pins.
-- A cutout in the front wall gives access to both USB-C ports, for power and flashing.
-- The RS-485 module lies on the floor, held by corner stops, with about 15 mm of free
-  space at each end for wiring.
-- An 8 mm hole in the opposite wall takes the bus cable (A, B, GND).
+- A 26 × 6 mm cutout in the front wall gives access to both USB-C ports, for power and
+  flashing.
+- The RS-485 module lies on the floor, held by corner stops, with about 6.5 mm of free
+  space at each end. Place it with its screw terminals facing the front wall.
+- An 8 mm hole in the same front wall, next to the USB cutout, takes the bus cable
+  (A, B, GND). All cables leave on one side.
 - The lid is a friction fit, with vent slots above the ESP32 and an engraved
   "EXOline" label.
 - Fully parametric OpenSCAD source: board sizes, clearances, wall thickness and lid
@@ -22,7 +24,7 @@ through ESPHome. It works for any project that combines these two boards.
 
 ## Specs
 
-- Outer size: about 96 × 61 × 40 mm, including the lid
+- Outer size: about 82 × 61 × 40 mm, including the lid
 - Wall thickness: 2.2 mm
 
 ## Print settings
@@ -40,6 +42,8 @@ through ESPHome. It works for any project that combines these two boards.
 - If your Dupont wires need more room under the ESP32, increase `esp_z`.
 - `usb_overhang` sets how far the USB-C connectors stick out past the PCB edge
   (default 1 mm).
+- `kam_shift` moves the RS-485 module away from the front wall if you need more room
+  for the bus cable.
 
 ## Files
 

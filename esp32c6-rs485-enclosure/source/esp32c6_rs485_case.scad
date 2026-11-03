@@ -3,7 +3,8 @@
 //
 // ESP32 leží vyvýšene na dvoch podperách (pod ním je miesto na dupont konektory
 // na spodných pinoch), USB-C ústi otvorom v čelnej stene. KAmod leží na dne
-// v rohových zarážkach, kábel zbernice ide otvorom v protiľahlej stene.
+// v rohových zarážkach, kábel zbernice ide otvorom v tej istej čelnej stene
+// vedľa USB (svorky KAmod otočené k nej).
 //
 // Variant na DIN lištu 35 mm: samostatný klip (tlačí sa naplocho) priskrutkovaný
 // zospodu dvoma skrutkami M3×10 so zápustnou hlavou do výstupkov v dne krabičky.
@@ -31,7 +32,8 @@ wall = 2.2;
 floor_t = 2.0;
 clr = 0.4;             // vôľa okolo dosiek
 gap = 9;               // medzera medzi doskami (káble)
-in_l = 92;             // vnútorná dĺžka (miesto na dupont na oboch koncoch KAmod)
+in_l = 77.6;           // vnútorná dĺžka → vonkajšia 82 mm
+kam_shift = 0;         // posun KAmod od stredu (+ = od čelnej steny)
 in_h = 36;             // vnútorná výška
 r = 3;                 // zaoblenie rohov
 
@@ -42,8 +44,8 @@ lip_t = 1.4;
 lip_clr = 0.25;        // vôľa veka (PETG); ak drží voľne, zmenši na 0.15
 
 /* [Otvory] */
-usb_hole_w = 24;       // oba USB-C porty DevKitu
-usb_hole_h = 10;
+usb_hole_w = 26;       // oba USB-C porty DevKitu
+usb_hole_h = 6;
 cable_d = 8;           // kábel zbernice (A, B, GND)
 
 /* [DIN klip] */
@@ -63,7 +65,7 @@ esp_y0 = clr;
 esp_y1 = esp_y0 + esp_w;
 kam_y0 = esp_y1 + gap;
 kam_y1 = kam_y0 + kam_w;
-kam_x0 = (in_l - kam_l) / 2;
+kam_x0 = (in_l - kam_l) / 2 + kam_shift;
 in_w = kam_y1 + clr + 1;
 out_l = in_l + 2 * wall;
 out_w = in_w + 2 * wall;
@@ -98,8 +100,8 @@ module body_base() {
                floor_t + esp_z + pcb_t + 1.7 - usb_hole_h / 2])
       cube([wall + 2, usb_hole_w, usb_hole_h]);
 
-    // kábel zbernice oproti USB, v osi KAmod
-    translate([in_l - 1, (kam_y0 + kam_y1) / 2, floor_t + 9])
+    // kábel zbernice v čelnej stene vedľa USB, v osi KAmod
+    translate([-wall - 1, (kam_y0 + kam_y1) / 2, floor_t + 9])
       rotate([0, 90, 0]) cylinder(d = cable_d, h = wall + 2);
   }
 

@@ -28,9 +28,9 @@ next to the circuit breakers in a distribution cabinet.
 ## Specs
 
 - Depth from the rail: about 43 mm
-- Width along the rail: about 96 mm
-- The rail runs along the long side of the enclosure. USB-C and the bus cable exit at
-  the ends, so leave about 35 mm free for the USB plug.
+- Width along the rail: about 82 mm
+- The rail runs along the long side of the enclosure. USB-C and the bus cable both exit
+  at the same end, so leave about 35 mm free on that side for the USB plug.
 
 ## Print settings
 
